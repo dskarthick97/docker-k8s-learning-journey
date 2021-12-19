@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kube-volume-persistent-volume-claim
+  labels:
+    object: persistent-volume-claim
+spec:
+  volumeName: kube-volume-persistent-volume
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce

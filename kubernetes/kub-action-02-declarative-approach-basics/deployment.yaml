@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: first-kube-deploy  # unique key for the deployment instance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: first-kube-deployment
+  template:
+    metadata:
+      labels:
+        app: first-kube-deployment
+    spec:
+      containers:
+        - 
+          name: first-kube-pod
+          image: karthicksabari/first-kube-cluster:1
+          # k8s will send the request to the specified path in a pod container
+          # to check whether the container in a pod is healthy or not. If there
+          # is no response from the container, then the container will be restarted.
+          livenessProbe:  
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 3  # how ofter to perform the health check
+            initialDelaySeconds: 2 # no. of seconds to intiate the livenessprobe after the container is started
+            # timeoutSeconds:  # no. of seconds after which the probe times out

@@ -1,0 +1,5 @@
+*.pem
+
+Dockerfile
+node_modules
+docker-compose.yml

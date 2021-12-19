@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: first-kube-service  # unique key for the service instance
+spec:
+  selector:
+    # load-balance traffic across Pods matching this label selector
+    app: first-kube-deployment
+  ports:
+    - 
+      name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+  type: LoadBalancer

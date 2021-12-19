@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-volume-deployment  # unique key of the Deployment instance
+  labels:
+    object: kube-volume-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      object: kube-volume-pod
+  template:
+    metadata:
+      name: kube-volume-pod
+      labels:
+        object: kube-volume-pod
+    spec:
+      containers:
+        - 
+          name: kube-volume-pod-container
+          image: karthicksabari/kube-volumes:3
+          env:
+            - name: STORY_FOLDER
+              valueFrom:
+                configMapKeyRef:
+                  name: kube-volume-environment-variables
+                  key: folder
+          volumeMounts: 
+            - mountPath: /app/story
+              name: kube-volume-pod-volume
+      volumes:
+        - name: kube-volume-pod-volume
+          persistentVolumeClaim:
+            claimName: kube-volume-persistent-volume-claim

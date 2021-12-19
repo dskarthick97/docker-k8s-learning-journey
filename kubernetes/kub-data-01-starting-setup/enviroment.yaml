@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-volume-environment-variables
+  labels:
+    object: config-map
+data:
+  folder: story

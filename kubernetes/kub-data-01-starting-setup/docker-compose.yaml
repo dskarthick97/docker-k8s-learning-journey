@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  stories:
+    build: .
+    image: karthicksabari/kube-volumes:3
+    volumes:
+      - stories:/app/story
+    ports:
+      - 80:3000
+
+volumes:
+  stories: 

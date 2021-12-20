@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kube-network-service-users
+  labels:
+    object: service
+spec:
+  selector:
+    app: users
+  type: LoadBalancer
+  ports:
+    - 
+      name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080  # port exposed by the container

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-network-tasks-deployment
+  labels:
+    object: deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tasks
+  template:
+    metadata:
+      name: kube-network-tasks-pod
+      labels:
+        object: pod
+        app: tasks
+    spec:
+      containers:
+        - 
+          name: kube-network-tasks-container
+          image: karthicksabari/kube-network-tasks:3
+          env:
+            - 
+              name: AUTH_ADDRESS
+              # value: "10.103.146.31"  # recommended to use configmaps
+              value: "kube-network-service-auth.default"
+            - 
+              name: TASKS_FOLDER
+              value: tasks

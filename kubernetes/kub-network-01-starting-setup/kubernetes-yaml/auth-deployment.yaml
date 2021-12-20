@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-network-auth-deployment
+  labels:
+    object: deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      name: kube-network-auth-pod
+      labels:
+        object: pod
+        app: auth
+    spec:
+      containers:
+        - 
+          name: kube-network-auth-container
+          image: karthicksabari/kube-network-auth:1

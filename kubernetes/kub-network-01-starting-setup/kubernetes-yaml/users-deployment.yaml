@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-network-users-deployment
+  labels:
+    object: deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users
+  template:
+    metadata:
+      name: kube-network-users-pod
+      labels:
+        object: pod
+        app: users
+    spec:
+      containers:
+        - 
+          name: kube-network-users-container
+          image: karthicksabari/kube-network-users:2
+          env:
+            - 
+              name: AUTH_ADDRESS
+              # value: "10.103.146.31"  # recommended to use configmaps
+              value: "kube-network-service-auth.default"

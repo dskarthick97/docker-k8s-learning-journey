@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: kub-tuto-demo-project-mongo-express-configmap
+  labels:
+    app: mongo-express-configmap
+    object: configmap
+data:
+  database-url: kub-tuto-demo-project-mongodb-service

@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: kub-tuto-demo-project-mongodb-service
+  labels:
+    app: mongodb-service
+    object: service
+spec:
+  selector:
+    app: mongo
+  type: ClusterIP
+  ports:
+    -
+      name: http
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
